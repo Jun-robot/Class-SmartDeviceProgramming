@@ -1,0 +1,2 @@
+# Class-SmartDeviceProgramming
+2024年春学期スマートデバイスプログラミング作業用リポジトリ
