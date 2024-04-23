@@ -29,8 +29,17 @@ public sealed class Game : GameBase{
 	int block_interval = 4;
 
 	int time;
-	int stage_phase;
-	int stage1_pointer_count; // 長押しになってしまって2に入ってもすぐリスタートしてしまうのを防ぐため。
+	int start_time;
+	int score;
+
+	int stage_phase; // 0:スタート画面 1:ゲーム画面 2:クリア画面
+	int stage1_last_time; // 長押しになってしまって2に入ってもすぐリスタートしてしまうのを防ぐため。
+	int stage2_last_time;
+
+	bool start_flag;
+	bool restart_flag;
+
+	bool isComplete;
 
 	/// <summary>
 	/// 初期化処理
@@ -45,27 +54,41 @@ public sealed class Game : GameBase{
 	/// 動きなどの更新処理
 	/// </summary>
 	public override void UpdateGame(){
-		if(gc.GetPointerFrameCount(0)>0 && stage_phase == 0){ // タッチされたらスタート
-			stage_phase = 1;
-		}
-		if(countBlock()==0){
-			stage_phase = 2;
-		}
-		if(stage_phase == 2){
-			if(gc.GetPointerFrameCount(0)>=120 && gc.GetPointerFrameCount(0)<=stage1_pointer_count){
-				// 2秒以上タッチされていたらリスタート
-				resetValue();
-				stage_phase = 0;
+		time++;
+
+		if(stage_phase == 0){
+			if(time-stage2_last_time >= 120){ // スタート画面に入ってから2秒以上経っていたらスタート可能
+				start_flag = true;
+				if(gc.GetPointerFrameCount(0)>0){
+					stage_phase = 1;
+					start_time = time;
+				}
+			}else{
+				start_flag = false;
 			}
-			resetValue();
-			stage_phase = 0;
+		}else if(stage_phase == 1){
+			if(countBlock()==0){
+				stage_phase = 2;
+				stage1_last_time = time;
+				isComplete = true;
+			}
+		}else if(stage_phase==2){
+			if(time-stage1_last_time >= 120){
+				// クリア画面に入ってから2秒以上経ったらリスタート可能
+				restart_flag = true;
+				if(gc.GetPointerFrameCount(0)>=120){
+					resetValue();
+					stage_phase = 0;
+					stage2_last_time = time;
+				}
+			}else{
+				restart_flag = false;
+			}
 		}
 
 		if(stage_phase == 1){
-			stage1_pointer_count = gc.GetPointerFrameCount(0);
-			if(stage1_pointer_count<120)stage1_pointer_count = 120; //どうやって処理するのが正しいのかわからん
-			// 時間測定
-			time++;
+			//スコア計算
+			score = time - start_time;
 
 			// ボールを動かす
 			ball_x = ball_x + ball_speed_x;
@@ -85,9 +108,11 @@ public sealed class Game : GameBase{
 				ball_speed_x = -ball_speed_x;
 			}
 			if(ball_y>456){
-				// 下に行った
-				// ball_y = 456;
-				// ball_speed_y = -ball_speed_y;
+				// 下に行ったらリセット
+				isComplete = false;
+				stage_phase = 2; // ゲームオーバー
+				stage1_last_time = time;
+				score = -999;
 			}
 
 			// プレイヤーの操作
@@ -128,13 +153,18 @@ public sealed class Game : GameBase{
 
 		gc.SetColor(0,0,0);
 		gc.SetFontSize(24);//文字の大きさを指定します。
-		gc.DrawString("Time: " + time, 10, 446);
+		gc.DrawString("Score: " + score, 10, 446);
 
-		if(stage_phase == 2){ // クリア画面
-			gc.SetColor(200,255,200);
+
+		if(stage_phase==0){	// スタート画面
+			gc.SetColor(0,0,0);
 			gc.SetFontSize(100);//文字の大きさを指定します。
-			gc.DrawString("Game Clear", 100, 100, 32);
-		}else if(stage_phase==0 || stage_phase==1){// ゲーム画面
+			gc.DrawString("Blocks", 100, 100);
+			gc.SetFontSize(24);
+			if(start_flag){
+				gc.DrawString("Touch to Start", 200, 200);
+			}
+		}else if(stage_phase==1){// ゲーム画面
 			// ボールの描画
 			gc.DrawImage(GcImage.BallYellow,ball_x,ball_y);
 
@@ -149,12 +179,26 @@ public sealed class Game : GameBase{
 					gc.FillRect(block_x[i],block_y[i],block_w,block_h);
 				}
 			}
+		}else if(stage_phase == 2){ // クリア画面
+			gc.SetColor(200,255,200);
+			gc.SetFontSize(100);//文字の大きさを指定します。
+			if(isComplete){
+				gc.DrawString("Game Clear", 200, 100, 32);
+			}else{
+				gc.DrawString("Game Over", 200, 100, 32);
+			}
+			if(restart_flag){
+				gc.SetFontSize(32);
+				gc.DrawString("Hold to Restart", 100, 150, 32);
+			}
 		}
 	}
 
+
+
 	void resetValue(){
 		ball_x = 308;
-		ball_y = 350;
+		ball_y = 150;
 		ball_speed_x = 3;
 		ball_speed_y = 3;
 
@@ -168,7 +212,10 @@ public sealed class Game : GameBase{
 			block_y[i] = 7 + (i/10) * (block_h + block_interval);
 			block_alive_flag[i] = true;
 		}
-		time = 0;
+		start_time=0;
+		score=0;
+
+		isComplete = false;
 	}
 
 	int countBlock(){
