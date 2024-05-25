@@ -11,6 +11,9 @@ using UnityEngine.InputSystem;
 public sealed class Game : GameBase{
 	// 変数の宣言
 	int sec = 0;
+	float player_x = 360;
+	float player_y = 640;
+	float player_speed = 20.0f;
 
 	/// <summary>
 	/// 初期化処理
@@ -26,6 +29,8 @@ public sealed class Game : GameBase{
 	public override void UpdateGame(){
 		// 起動からの経過時間を取得します
 		sec = (int)gc.TimeSinceStartup;
+		player_x += gc.AccelerationLastX * player_speed;
+		player_y += gc.AccelerationLastY * player_speed;
 
 	}
 
@@ -39,5 +44,6 @@ public sealed class Game : GameBase{
 		gc.DrawString("AcceX:"+gc.AccelerationLastX,0,0);
 		gc.DrawString("AcceY:"+gc.AccelerationLastY,0,40);
 		gc.DrawString("AcceZ:"+gc.AccelerationLastZ,0,80);
+		gc.DrawImage(GcImage.BallYellow,(int)player_x,(int)player_y);
 	}
 }
