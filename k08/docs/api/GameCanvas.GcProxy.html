@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GcProxy
+   | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GcProxy
+   | GameCanvas ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.GcProxy">
+  
+  
+  <h1 id="GameCanvas_GcProxy" data-uid="GameCanvas.GcProxy" class="text-break">Class GcProxy
+  </h1>
+  <div class="markdown level0 summary"><p>ユーザー定義クラスからGameCanvasの機能を呼び出すためのクラス</p>
+</div>
+  <div class="markdown level0 conceptual"><p>GameCanvas API</p>
+<p><code>gc.***</code> で呼べる関数の一覧です</p>
+<ul>
+<li><a href="#properties">プロパティ</a></li>
+<li><a href="#methods">メソッド</a></li>
+</ul>
+</div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">GcProxy</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="GameCanvas.IGameCanvas.html">IGameCanvas</a></div>
+    <div><a class="xref" href="GameCanvas.IGraphicsEx.html">IGraphicsEx</a></div>
+    <div><a class="xref" href="GameCanvas.IGraphics.html">IGraphics</a></div>
+    <div><a class="xref" href="GameCanvas.ISoundEx.html">ISoundEx</a></div>
+    <div><a class="xref" href="GameCanvas.ISound.html">ISound</a></div>
+    <div><a class="xref" href="GameCanvas.INetworkEx.html">INetworkEx</a></div>
+    <div><a class="xref" href="GameCanvas.INetwork.html">INetwork</a></div>
+    <div><a class="xref" href="GameCanvas.ISceneManagementEx.html">ISceneManagementEx</a></div>
+    <div><a class="xref" href="GameCanvas.ISceneManagement.html">ISceneManagement</a></div>
+    <div><a class="xref" href="GameCanvas.ITimeEx.html">ITimeEx</a></div>
+    <div><a class="xref" href="GameCanvas.ITime.html">ITime</a></div>
+    <div><a class="xref" href="GameCanvas.IPhysicsEx.html">IPhysicsEx</a></div>
+    <div><a class="xref" href="GameCanvas.IPhysics.html">IPhysics</a></div>
+    <div><a class="xref" href="GameCanvas.IStorageEx.html">IStorageEx</a></div>
+    <div><a class="xref" href="GameCanvas.IStorage.html">IStorage</a></div>
+    <div><a class="xref" href="GameCanvas.IMathEx.html">IMathEx</a></div>
+    <div><a class="xref" href="GameCanvas.IMath.html">IMath</a></div>
+    <div><a class="xref" href="GameCanvas.IInputPointerEx.html">IInputPointerEx</a></div>
+    <div><a class="xref" href="GameCanvas.IInputPointer.html">IInputPointer</a></div>
+    <div><a class="xref" href="GameCanvas.IInputKeyEx.html">IInputKeyEx</a></div>
+    <div><a class="xref" href="GameCanvas.IInputKey.html">IInputKey</a></div>
+    <div><a class="xref" href="GameCanvas.IInputAccelerationEx.html">IInputAccelerationEx</a></div>
+    <div><a class="xref" href="GameCanvas.IInputAcceleration.html">IInputAcceleration</a></div>
+    <div><a class="xref" href="GameCanvas.IInputGeolocationEx.html">IInputGeolocationEx</a></div>
+    <div><a class="xref" href="GameCanvas.IInputGeolocation.html">IInputGeolocation</a></div>
+    <div><a class="xref" href="GameCanvas.IInputCameraEx.html">IInputCameraEx</a></div>
+    <div><a class="xref" href="GameCanvas.IInputCamera.html">IInputCamera</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
+  <h5 id="GameCanvas_GcProxy_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class GcProxy : IGameCanvas, IGraphicsEx, IGraphics, ISoundEx, ISound, INetworkEx, INetwork, ISceneManagementEx, ISceneManagement, ITimeEx, ITime, IPhysicsEx, IPhysics, IStorageEx, IStorage, IMathEx, IMath, IInputPointerEx, IInputPointer, IInputKeyEx, IInputKey, IInputAccelerationEx, IInputAcceleration, IInputGeolocationEx, IInputGeolocation, IInputCameraEx, IInputCamera</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="GameCanvas_GcProxy_AccelerationEventCount_" data-uid="GameCanvas.GcProxy.AccelerationEventCount*"></a>
+  <h4 id="GameCanvas_GcProxy_AccelerationEventCount" data-uid="GameCanvas.GcProxy.AccelerationEventCount">AccelerationEventCount</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AccelerationEventCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_AccelerationEvents_" data-uid="GameCanvas.GcProxy.AccelerationEvents*"></a>
+  <h4 id="GameCanvas_GcProxy_AccelerationEvents" data-uid="GameCanvas.GcProxy.AccelerationEvents">AccelerationEvents</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの列挙子</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlySpan&lt;GcAccelerationEvent&gt; AccelerationEvents { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.readonlyspan-1?view=netstandard-2.1">ReadOnlySpan</a>&lt;<a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_AccelerometerSamplingRate_" data-uid="GameCanvas.GcProxy.AccelerometerSamplingRate*"></a>
+  <h4 id="GameCanvas_GcProxy_AccelerometerSamplingRate" data-uid="GameCanvas.GcProxy.AccelerometerSamplingRate">AccelerometerSamplingRate</h4>
+  <div class="markdown level1 summary"><p>加速度計の動作周波数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float AccelerometerSamplingRate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_BackgroundColor_" data-uid="GameCanvas.GcProxy.BackgroundColor*"></a>
+  <h4 id="GameCanvas_GcProxy_BackgroundColor" data-uid="GameCanvas.GcProxy.BackgroundColor">BackgroundColor</h4>
+  <div class="markdown level1 summary"><p>背景色</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color BackgroundColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Color.html">Color</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_BorderColor_" data-uid="GameCanvas.GcProxy.BorderColor*"></a>
+  <h4 id="GameCanvas_GcProxy_BorderColor" data-uid="GameCanvas.GcProxy.BorderColor">BorderColor</h4>
+  <div class="markdown level1 summary"><p>キャンバス外に表示される帯の色</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color BorderColor { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Color.html">Color</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_GcProxy_BorderColor_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color__">ChangeBorderColor(Color)</a> を呼び出すことで変更できます</p>
+</div>
+  <a id="GameCanvas_GcProxy_CameraDeviceCount_" data-uid="GameCanvas.GcProxy.CameraDeviceCount*"></a>
+  <h4 id="GameCanvas_GcProxy_CameraDeviceCount" data-uid="GameCanvas.GcProxy.CameraDeviceCount">CameraDeviceCount</h4>
+  <div class="markdown level1 summary"><p>認識可能なカメラ（外部入力映像）の数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CameraDeviceCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_CameraDevices_" data-uid="GameCanvas.GcProxy.CameraDevices*"></a>
+  <h4 id="GameCanvas_GcProxy_CameraDevices" data-uid="GameCanvas.GcProxy.CameraDevices">CameraDevices</h4>
+  <div class="markdown level1 summary"><p>全ての認識可能なカメラ（外部入力映像）の一覧</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlySpan&lt;GcCameraDevice&gt; CameraDevices { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.readonlyspan-1?view=netstandard-2.1">ReadOnlySpan</a>&lt;<a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_CanvasAABB_" data-uid="GameCanvas.GcProxy.CanvasAABB*"></a>
+  <h4 id="GameCanvas_GcProxy_CanvasAABB" data-uid="GameCanvas.GcProxy.CanvasAABB">CanvasAABB</h4>
+  <div class="markdown level1 summary"><p>キャンバスのAABB</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcAABB CanvasAABB { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_CanvasCenter_" data-uid="GameCanvas.GcProxy.CanvasCenter*"></a>
+  <h4 id="GameCanvas_GcProxy_CanvasCenter" data-uid="GameCanvas.GcProxy.CanvasCenter">CanvasCenter</h4>
+  <div class="markdown level1 summary"><p>キャンバスの中心座標</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 CanvasCenter { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_CanvasHeight_" data-uid="GameCanvas.GcProxy.CanvasHeight*"></a>
+  <h4 id="GameCanvas_GcProxy_CanvasHeight" data-uid="GameCanvas.GcProxy.CanvasHeight">CanvasHeight</h4>
+  <div class="markdown level1 summary"><p>キャンバスの縦幅</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CanvasHeight { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcProxy_CanvasResolution_" data-uid="GameCanvas.GcProxy.CanvasResolution*"></a>
+  <h4 id="GameCanvas_GcProxy_CanvasResolution" data-uid="GameCanvas.GcProxy.CanvasResolution">CanvasResolution</h4>
+  <div class="markdown level1 summary"><p>キャンバスの解像度とリフレッシュレート</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcResolution CanvasResolution { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcResolution.html">GcResolution</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="GameCanvas.IGameCanvas.html">IGameCanvas</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html">IGraphicsEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IGraphics.html">IGraphics</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.ISoundEx.html">ISoundEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.ISound.html">ISound</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.INetworkEx.html">INetworkEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.INetwork.html">INetwork</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.ISceneManagementEx.html">ISceneManagementEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html">ISceneManagement</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.ITimeEx.html">ITimeEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.ITime.html">ITime</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IPhysicsEx.html">IPhysicsEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IPhysics.html">IPhysics</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IStorageEx.html">IStorageEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IStorage.html">IStorage</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IMathEx.html">IMathEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IMath.html">IMath</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html">IInputPointerEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputPointer.html">IInputPointer</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html">IInputKeyEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputKey.html">IInputKey</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputAccelerationEx.html">IInputAccelerationEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputAcceleration.html">IInputAcceleration</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputGeolocationEx.html">IInputGeolocationEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputGeolocation.html">IInputGeolocation</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html">IInputCameraEx</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.IInputCamera.html">IInputCamera</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2024 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
