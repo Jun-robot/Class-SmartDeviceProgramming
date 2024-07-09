@@ -81,7 +81,7 @@ public sealed class Game : GameBase{
 			if(time-stage1_last_time >= 120){
 				// クリア画面に入ってから2秒以上経ったらリスタート可能
 				restart_flag = true;
-				if(gc.GetPointerFrameCount(0)>=120){
+				if(gc.GetPointerFrameCount(0)>=100){
 					resetValue();
 					stage_phase = 0;
 					stage2_last_time = time;
@@ -109,9 +109,8 @@ public sealed class Game : GameBase{
 			if(ball_y<0){
 				ball_y = 0;
 				ball_speed_y = -ball_speed_y;
-				if(ball_speed_y >0){ball_speed_y = -5;}
-				else{ball_speed_y = 5;}
-
+				if(ball_speed_y >0){ball_speed_y = 5;}
+				else{ball_speed_y = -5;}
 			}
 			if(ball_x>616){
 				ball_x = 616;
@@ -173,7 +172,7 @@ public sealed class Game : GameBase{
 			gc.SetColor(250,250,250);
 			gc.SetFontSize(100);//文字の大きさを指定します。
 			gc.DrawString("Blocks", 100, 100);
-			gc.SetFontSize(24);
+			gc.SetFontSize(44);
 			if(start_flag){
 				gc.DrawString("Touch to Start", 200, 200);
 			}
