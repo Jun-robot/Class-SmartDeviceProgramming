@@ -149,15 +149,15 @@ public sealed class Game : GameBase{
 		// 画面を白で塗りつぶします
 		gc.ClearScreen();
 		// 0番の画像を描画します
-		gc.DrawImage(GcImage.BlueSky, 0, 0);
+		gc.DrawImage(GcImage.Universe, 0, 0);
 
-		gc.SetColor(0,0,0);
+		gc.SetColor(250,250,250);
 		gc.SetFontSize(24);//文字の大きさを指定します。
 		gc.DrawString("Score: " + score, 10, 446);
 
 
 		if(stage_phase==0){	// スタート画面
-			gc.SetColor(0,0,0);
+			gc.SetColor(250,250,250);
 			gc.SetFontSize(100);//文字の大きさを指定します。
 			gc.DrawString("Blocks", 100, 100);
 			gc.SetFontSize(24);
@@ -169,18 +169,18 @@ public sealed class Game : GameBase{
 			gc.DrawImage(GcImage.BallYellow,ball_x,ball_y);
 
 			// プレイヤーの描画
-			gc.SetColor(0,0,255);
+			gc.SetColor(30,100,150);
 			gc.FillRect(player_x,player_y,player_w,player_h);
 
 			// ブロックの描画
+			gc.SetColor(250,30,90);
 			for(int i=0; i<BLOCK_NUM; i++){
 				if(block_alive_flag[i]){
-					gc.SetColor(255,0,0);
 					gc.FillRect(block_x[i],block_y[i],block_w,block_h);
 				}
 			}
 		}else if(stage_phase == 2){ // クリア画面
-			gc.SetColor(200,255,200);
+			gc.SetColor(100,200,240);
 			gc.SetFontSize(100);//文字の大きさを指定します。
 			if(isComplete){
 				gc.DrawString("Game Clear", 200, 100, 32);
