@@ -13,7 +13,7 @@ public sealed class Game : GameBase{
 	int ball_x;
 	int ball_y;
 	int ball_speed_x;
-	int ball_speed_y;
+	float ball_speed_y;
 
 	int player_x;
 	int player_y;
@@ -41,6 +41,10 @@ public sealed class Game : GameBase{
 
 	bool isComplete;
 
+	// 重力の設定
+	float mygravity = 0.1f; // 重力加速度
+	float ball_accel_y = 0.05f; // ボールの縦方向の加速度
+
 	/// <summary>
 	/// 初期化処理
 	/// </summary>
@@ -56,6 +60,7 @@ public sealed class Game : GameBase{
 	public override void UpdateGame(){
 		time++;
 
+		// フェーズ切り替え
 		if(stage_phase == 0){
 			if(time-stage2_last_time >= 120){ // スタート画面に入ってから2秒以上経っていたらスタート可能
 				start_flag = true;
@@ -91,8 +96,10 @@ public sealed class Game : GameBase{
 			score = time - start_time;
 
 			// ボールを動かす
+			ball_speed_y += ball_accel_y;
+
 			ball_x = ball_x + ball_speed_x;
-			ball_y = ball_y + ball_speed_y;
+			ball_y = ball_y + (int)ball_speed_y;
 
 			// 壁との跳ね返り判定
 			if(ball_x<0){
@@ -102,13 +109,15 @@ public sealed class Game : GameBase{
 			if(ball_y<0){
 				ball_y = 0;
 				ball_speed_y = -ball_speed_y;
+				if(ball_speed_y >0){ball_speed_y = -5;}
+				else{ball_speed_y = 5;}
+
 			}
 			if(ball_x>616){
 				ball_x = 616;
 				ball_speed_x = -ball_speed_x;
 			}
 			if(ball_y>456){
-				// 下に行ったらリセット
 				isComplete = false;
 				stage_phase = 2; // ゲームオーバー
 				stage1_last_time = time;
@@ -124,7 +133,9 @@ public sealed class Game : GameBase{
 			// プレイヤーとボールの跳ね返り判定
 			if(gc.CheckHitRect(ball_x,ball_y,24,24,player_x,player_y,player_w,player_h)){
 				if(ball_speed_y > 0){
-					ball_speed_y = -ball_speed_y;
+					// ball_speed_y = -ball_speed_y;
+					if(ball_speed_y >0){ball_speed_y = -10;}
+					else{ball_speed_y = 5;}
 				}
 			}
 
@@ -134,7 +145,9 @@ public sealed class Game : GameBase{
 					if(gc.CheckHitRect(ball_x,ball_y,24,24,block_x[i],block_y[i],block_w,block_h)){
 						block_alive_flag[i] = false;
 						if(ball_speed_y < 0){
-							ball_speed_y = -ball_speed_y;
+							// ball_speed_y = -ball_speed_y;
+							if(ball_speed_y >0){ball_speed_y = -5;}
+							else{ball_speed_y = 5;}
 						}
 					}
 				}
