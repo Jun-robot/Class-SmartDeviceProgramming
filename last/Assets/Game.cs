@@ -81,7 +81,7 @@ public sealed class Game : GameBase{
 			if(time-stage1_last_time >= 120){
 				// クリア画面に入ってから2秒以上経ったらリスタート可能
 				restart_flag = true;
-				if(gc.GetPointerFrameCount(0)>=100){
+				if(gc.GetPointerFrameCount(0)>=60){
 					resetValue();
 					stage_phase = 0;
 					stage2_last_time = time;
